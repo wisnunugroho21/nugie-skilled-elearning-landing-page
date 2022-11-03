@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    
+    <title>Frontend Mentor | Skilled e-learning landing page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .top img {
+        width: 111px;
+      }
+
+      body > .content {
+        padding: 24px 165px 140px 165px;
+        background: linear-gradient(180deg, #FFFFFF 0%, #F0F1FF 100%);
+        z-index: 1;
+      }
+
+      .img-mobile {
+        display: none;
+      }
+
+      .img-tablet {
+        display: none;
+      }
+
+      .img-desktop {
+        display: inline;
+        height: 750px;
+        width: 600px;
+        object-position: bottom left;
+        object-fit: cover;
+      }
+
+      .main-image {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      
+      .top {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .top .get-started {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        color: #FFFFFF;
+        background: #13183F;
+        border-radius: 28px;
+        padding: 14px 32px 14px 32px;
+        height: fit-content;
+        width: fit-content;
+      }
+
+      .top .get-started:hover {
+        background: red;
+        border-radius: 0;
+      }
+
+      .description {
+        margin-top: 185px;
+        max-width: 460px;
+      }
+
+      .description .title {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 56px;
+        line-height: 71px;
+        color: #13183F;
+      }
+
+      .description .subtitle {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        color: #83869A;
+        margin-top: 30px;
+      }
+
+      .description .get-started {
+        background: linear-gradient(180deg, #FF6F48 0%, #F02AA6 100%);
+        border-radius: 31.5px;
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        color: #FFFFFF;
+
+        padding: 19px 31px 16px 32px;
+        width: fit-content;
+        margin-top: 40px;
+      }
+
+      .courses {
+        margin-top: 226px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-column-gap: 30px;
+        grid-row-gap: 86px;
+      }
+
+      .courses .intro {
+        padding: 64px 32px;
+        background: linear-gradient(180deg, #FF6F48 0%, #F02AA6 100%);
+        border-radius: 15px;
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 40px;
+        color: #FFFFFF;
+      }
+
+      .courses .item {
+        background: #FFFFFF;
+        box-shadow: 0px 25px 50px rgba(6, 22, 141, 0.0442381);
+        border-radius: 15px;
+        padding: 64px 32px 40px 32px;
+      }
+
+      .courses .content {
+        margin-top: 32px;
+        display: flex;
+        flex-flow: column nowrap;
+        height: 100%;
+      }
+
+      .courses .item .title {
+        flex: 0 0 0;
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 30px;
+        color: #13183F;
+        margin-bottom: 24px;
+      }
+
+      .courses .item .subtitle {
+        flex: 1 0 0;
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        color: #83869A;
+      }
+
+      .courses .item .get-started {
+        flex: 0 0 0;
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        color: #F74780;
+        margin-top: 24px;
+      }
+
+      .courses .item .image {
+        margin-top: -94px;
+      }
+
+      .bottom {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 120px;
+        background: #13183F;
+        padding: 0 165px;
+        z-index: 1;
+      }
+
+      .bottom .get-started {
+        background: linear-gradient(180deg, #4851FF -54.32%, #F02AA6 100%);
+        border-radius: 28px;
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        color: #FFFFFF;
+        padding: 14px 32px 14px 31px;
+      }
+
+      @media only screen and (max-width: 1085px) {
+        body > .content {
+          padding: 24px 40px 86px 40px;
+        }
+
+        .top img {
+          width: 89px;
+        }
+
+        .img-tablet {
+          display: inline;
+          height: 548px;
+          width: 340px;
+          object-position: bottom left;
+          object-fit: cover;
+        }
+
+        .img-desktop {
+          display: none;
+        }
+
+        .img-mobile {
+          display: none;
+        }
+        
+        .top .get-started {
+          font-size: 16px;
+          line-height: 28px;
+          border-radius: 28px;
+          padding: 9px 24px 11px 24px;
+        }
+
+        .description {
+          margin-top: 100px;
+          max-width: 400px;
+        }
+
+        .description .title {
+          font-size: 40px;
+          line-height: 50px;
+        }
+
+        .description .subtitle {
+          font-size: 16px;
+          line-height: 26px;
+          margin-top: 25px;
+        }
+
+        .description .get-started {
+          font-size: 16px;
+          line-height: 26px;
+          padding: 15px 37px 15px 38px;
+          margin-top: 24px;
+        }
+
+        .courses {
+          margin-top: 186px;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr 1fr;
+          grid-column-gap: 10px;
+          grid-row-gap: 62px;
+        }
+
+        .courses .intro {
+          padding: 56px 21px 56px 32px;
+          border-radius: 10px;
+          font-size: 24px;
+          line-height: 32px;
+        }
+
+        .courses .item {
+          border-radius: 10px;
+          padding: 56px 21px 32px 32px;
+        }
+
+        .courses .content {
+          margin-top: 32px;
+          display: flex;
+          flex-flow: column nowrap;
+          height: 100%;
+        }
+
+        .courses .item .title {
+          font-size: 20px;
+          line-height: 25px;
+          margin-bottom: 16px;
+        }
+
+        .courses .item .subtitle {
+          font-size: 16px;
+          line-height: 26px;
+        }
+
+        .courses .item .get-started {
+          font-size: 18px;
+          line-height: 28px;
+          margin-top: 24px;
+        }
+
+        .courses .item .image {
+          margin-top: -86px;
+        }
+
+        .bottom {
+          padding: 0 40px;
+        }
+
+        .bottom .get-started {
+          font-size: 16px;
+          line-height: 28px;
+          padding: 9px 24px 11px 24px;
+        }
+      }
+
+      @media only screen and (max-width: 700px) {
+        body > .content {
+          padding: 16px 16px 80px 16px;
+        }
+
+        .top img {
+          width: 89px;
+        }
+
+        .img-mobile {
+          display: inline;
+          width: 100%;
+          margin-top: 46px;
+        }
+
+        .img-mobile img {
+          width: 100%;
+        }
+
+        .img-tablet {
+          display: none;
+        }
+
+        .img-desktop {
+          display: none;
+        }
+        
+        .top .get-started {
+          font-size: 16px;
+          line-height: 28px;
+          border-radius: 28px;
+          padding: 9px 24px 11px 24px;
+        }
+
+        .description {
+          margin-top: 38px;
+          width: 100%;
+        }
+
+        .description .title {
+          font-size: 40px;
+          line-height: 50px;
+        }
+
+        .description .subtitle {
+          font-size: 16px;
+          line-height: 26px;
+          margin-top: 26px;
+        }
+
+        .description .get-started {
+          font-size: 16px;
+          line-height: 26px;
+          padding: 15px 37px 15px 38px;
+          margin-top: 24px;
+        }
+
+        .courses {
+          margin-top: 66px;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr 1fr 1fr 1fr 1fr;
+          grid-row-gap: 48px;
+        }
+
+        .courses .intro {
+          padding: 24px 29px 32px 28px;
+          border-radius: 10px;
+          font-size: 24px;
+          line-height: 32px;
+          height: fit-content;
+        }
+
+        .courses .item {
+          border-radius: 10px;
+          padding: 24px 29px 32px 28px;
+        }
+
+        .courses .content {
+          margin-top: 32px;
+          display: flex;
+          flex-flow: column nowrap;
+          height: fit-content;
+        }
+
+        .courses .item .title {
+          font-size: 20px;
+          line-height: 25px;
+          margin-bottom: 16px;
+        }
+
+        .courses .item .subtitle {
+          font-size: 16px;
+          line-height: 26px;
+        }
+
+        .courses .item .get-started {
+          font-size: 18px;
+          line-height: 28px;
+          margin-top: 24px;
+        }
+
+        .courses .item .image {
+          margin-top: -54px;
+        }
+
+        .bottom {
+          padding: 0 16px;
+        }
+
+        .bottom .get-started {
+          font-size: 16px;
+          line-height: 28px;
+          padding: 9px 24px 11px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="content">
+      <div class="top">
+        <div class="logo-dark">
+          <img src="assets/logo-dark.svg">
+        </div>
+
+        <div class="get-started">
+          Get Started
+        </div>
+      </div>
+      <div class="img-mobile">
+        <img src="assets/image-hero-mobile.png">
+      </div>
+      <div class="description">
+        <div class="title">
+          Maximize skill, minimize budget
+        </div>
+        <div class="subtitle">
+          Our modern courses across a range of in-demand skills will give you the knowledge you need to live the life you want.
+        </div>
+        <div class="get-started">
+          Get Started
+        </div>
+      </div>
+      <div class="courses">
+        <div class="intro">
+          Check out our most popular courses!
+        </div>
+        <div class="item">
+          <div class="image">
+            <img src="assets/icon-animation.svg">
+          </div>
+          <div class="content">
+            <div class="title">
+              Animation
+            </div>
+            <div class="subtitle">
+              Learn the latest animation techniques to create stunning motion design and captivate your audience.
+            </div>
+            <div class="get-started">
+              Get Started
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="image">
+            <img src="assets/icon-design.svg">
+          </div>
+          <div class="content">
+            <div class="title">
+              Design
+            </div>
+            <div class="subtitle">
+              Create beautiful, usable interfaces to help shape the future of how the web looks.
+            </div>
+            <div class="get-started">
+              Get Started
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="image">
+            <img src="assets/icon-photography.svg">
+          </div>
+          <div class="content">
+            <div class="title">
+              Photography
+            </div>
+            <div class="subtitle">
+              Explore critical fundamentals like lighting, composition, and focus to capture exceptional photos.
+            </div>
+            <div class="get-started">
+              Get Started
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="image">
+            <img src="assets/icon-crypto.svg">
+          </div>
+          <div class="content">
+            <div class="title">
+              Crypto
+            </div>
+            <div class="subtitle">
+              All you need to know to get started investing in crypto. Go from beginner to advanced with this 54 hour course.
+            </div>
+            <div class="get-started">
+              Get Started
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="image">
+            <img src="assets/icon-business.svg">
+          </div>
+          <div class="content">
+            <div class="title">
+              Business
+            </div>
+            <div class="subtitle">
+              A step-by-step playbook to help you start, scale, and sustain your business without outside investment.
+            </div>
+            <div class="get-started">
+              Get Started
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="logo-light">
+        <img src="assets/logo-light.svg">
+      </div>
+      <div class="get-started">
+        Get Started
+      </div>
+    </div>
+    <div class="main-image">
+      <img src="assets/image-hero-desktop.png" class="img-desktop">
+      <img src="assets/image-hero-tablet.png" class="img-tablet">
+    </div>
+  </body>
+</html>
